@@ -1,2 +1,3 @@
-public class ReunionPresencial {
+public class ReunionPresencial extends Reunion {
+    private String sala;
 }

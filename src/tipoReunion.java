@@ -1,4 +1,3 @@
-package PACKAGE_NAME;
-
-public class tipoReunion {
+public enum tipoReunion {
+    TECNICA, MARKETING, OTRO;
 }

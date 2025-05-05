@@ -1,2 +1,2 @@
-public class Invitable {
+public interface Invitable {
 }
