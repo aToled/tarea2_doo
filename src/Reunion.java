@@ -16,6 +16,30 @@ public abstract class Reunion {
     public int obtenerTotalAsistencia(){}
     public float obtenerPorcentajeAsistencia(){}
     public float calcularTiempoReal(){}
-    public void iniciar(){}
-    public void finalizar(){}
+    public void iniciar(){
+        horainicio=Instant.now();
+    }
+    public void finalizar(){
+        horaFin=Instant.now();
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public Instant getHoraPrevista() {
+        return horaPrevista;
+    }
+
+    public Duration getDuracionPrevista() {
+        return duracionPrevista;
+    }
+
+    public Instant getHorainicio() {
+        return horainicio;
+    }
+
+    public Instant getHoraFin() {
+        return horaFin;
+    }
 }
