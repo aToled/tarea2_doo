@@ -4,4 +4,9 @@ public class ReunionVirtual extends Reunion{
     public String getEnlace() {
         return enlace;
     }
+
+    @Override
+    public String toString() {
+        return "Reunión virtual en el enlace: " + enlace;
+    }
 }

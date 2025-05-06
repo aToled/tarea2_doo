@@ -42,4 +42,13 @@ public abstract class Reunion {
     public Instant getHoraFin() {
         return horaFin;
     }
+
+    @Override
+    public String toString() {
+        return "Reunión a las " + fecha.toString() +
+                "\nhora prevista: " + horaPrevista +
+                "\nduración prevista: " + duracionPrevista +
+                "\nhora inicio: " + horainicio.toString() +
+                "\nhora fin: " + horaFin.toString();
+    }
 }

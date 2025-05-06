@@ -6,4 +6,9 @@ public class Invitacion {
     public Instant getHora() {
         return hora;
     }
+
+    @Override
+    public String toString() {
+        return "Invitación a la/s " + hora + " hora/s";
+    }
 }

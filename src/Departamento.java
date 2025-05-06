@@ -5,4 +5,9 @@ public class Departamento implements Invitable{
     public String getNombre() {
         return nombre;
     }
+
+    @Override
+    public String toString() {
+        return "Departamento: " + nombre + " / Emleados: " + obtenerCantidadEmpleados();
+    }
 }

@@ -4,4 +4,9 @@ public class ReunionPresencial extends Reunion {
     public String getSala() {
         return sala;
     }
+
+    @Override
+    public String toString() {
+        return "Reunión presencial en la sala: " + sala;
+    }
 }
