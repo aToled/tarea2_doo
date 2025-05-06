@@ -6,6 +6,9 @@ public class ReunionVirtual extends Reunion{
     }
 
     @Override
+    public Modalidad getModalidad() { return Modalidad.Virtual; }
+
+    @Override
     public String toString() {
         return "Reunión virtual en el enlace: " + enlace;
     }
