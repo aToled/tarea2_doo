@@ -1,8 +1,17 @@
+import java.time.Instant;
+import java.util.Date;
+
 public class ReunionVirtual extends Reunion{
     private String enlace;
 
     public String getEnlace() {
         return enlace;
+    }
+
+    public ReunionVirtual() {}
+
+    public ReunionVirtual(Date fecha, Instant horaPrevista) {
+        super(fecha, horaPrevista);
     }
 
     @Override

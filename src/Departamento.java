@@ -1,6 +1,7 @@
 public class Departamento implements Invitable{
     private String nombre;
-    public int obtenerCantidadEmpleados(){}
+    // TODO: Obtener número de empleados
+    public int obtenerCantidadEmpleados() { return 0; }
 
     public String getNombre() {
         return nombre;
