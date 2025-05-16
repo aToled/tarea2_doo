@@ -164,6 +164,15 @@ public abstract class Reunion {
         }
     }
 
+    public void invitar(Invitable invitado) {
+        Invitacion invitacion = new Invitacion(this);
+        invitado.invitar(invitacion);
+    }
+
+    public void invitacionAceptada(Invitacion invitacion, Invitable invitable) {
+        // TODO: Añadir invitado y ver si está atrasado o no
+    }
+
     @Override
     public String toString() {
         return "Reunión a las " + fecha.toString() +
