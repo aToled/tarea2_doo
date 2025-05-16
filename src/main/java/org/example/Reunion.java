@@ -151,7 +151,7 @@ public abstract class Reunion {
             fw.write("Notas de la reunión:\n");
             List<Nota> notas = obtenerNotas();
             for (Nota nota : notas) {
-                fw.write("-" + nota.getContenido() + "\n");
+                fw.write("-" + nota.toString() + "\n");
             }
 
             // close the writer
