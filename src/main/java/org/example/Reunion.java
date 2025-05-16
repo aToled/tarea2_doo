@@ -17,6 +17,9 @@ public abstract class Reunion {
     private Instant horainicio;
     private Instant horaFin;
     private TipoReunion tipoDeReunion;
+    private ArrayList<Empleado> asistencias;
+    private ArrayList<Empleado> ausencias;
+    private ArrayList<Empleado> retrasos;
     private ArrayList<Nota> notas;
 
     public Reunion() {}
@@ -161,6 +164,19 @@ public abstract class Reunion {
 
         } catch (IOException e) {
             System.out.println("Error al tratar de escribir informe: " + e);
+        }
+    }
+
+    public void invitar(Empleado empleado) {
+        Invitacion invitacion = new Invitacion(this);
+        empleado.invitar(invitacion);
+    }
+
+    public void invitacionAceptada(Invitacion invitacion, Empleado empleado) {
+        if (horaPrevista.compareTo(invitacion.getHora()) >= 0) {
+            asistencias.add(empleado);
+        } else {
+            retrasos.add(empleado);
         }
     }
 

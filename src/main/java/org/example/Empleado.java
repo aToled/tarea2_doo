@@ -15,6 +15,10 @@ public class Empleado implements Invitable {
         this.correo=correo;
     }
 
+    public void invitar(Invitacion invitacion) {
+        invitacion.reunion.invitacionAceptada(invitacion, this);
+    }
+
     public String getId() {
         return id;
     }
