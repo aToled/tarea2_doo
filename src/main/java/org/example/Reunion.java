@@ -17,6 +17,7 @@ public abstract class Reunion {
     private Instant horainicio;
     private Instant horaFin;
     private TipoReunion tipoDeReunion;
+    private ArrayList<Nota> notas;
 
     public Reunion() {}
 
@@ -29,7 +30,7 @@ public abstract class Reunion {
     public List obtenerAsistencias() { return new ArrayList<>(); }
     public List obtenerAusencias() { return new ArrayList<>(); }
     public List obtenerRetrasos() { return new ArrayList<>(); }
-    public List<Nota> obtenerNotas() { return new ArrayList<>(); }
+    public List<Nota> obtenerNotas() { return notas; }
     public int obtenerTotalAsistencia() { return obtenerAsistencias().size(); }
     public int obtenerTotalAusencias() { return obtenerAusencias().size(); }
     public int obtenerTotalRetrasos() { return obtenerRetrasos().size(); }
@@ -40,6 +41,10 @@ public abstract class Reunion {
 
         return ausencias / (asistencias + ausencias);
     }
+
+    public void agregarNota(Nota nota) { notas.add(nota); }
+    public void quitarNota(int indice) { if (indice < 0 || indice >= notas.size()) return; else {notas.remove(indice);}}
+
     public float calcularTiempoReal() {
         return ChronoUnit.MINUTES.between(horaFin, horainicio);
     }
