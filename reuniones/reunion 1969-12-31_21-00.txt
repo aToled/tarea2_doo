@@ -1,7 +1,7 @@
 Fecha: 1969-12-31
-Hora prevista: 2025-05-12T01:09:52.813Z
-Hora inicio: 2025-05-12T01:09:52.813Z
-Hora final: 2025-05-12T01:09:52.813Z
+Hora prevista: 2025-05-16T23:51:43.935Z
+Hora inicio: 2025-05-16T23:51:43.935Z
+Hora final: 2025-05-16T23:51:43.935Z
 Duración: 0 horas con 0 minutos
 Tipo de reunión: nullSala: Sala A3
 Porcentaje de asistencias: 0.0

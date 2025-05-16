@@ -3,6 +3,7 @@ package org.example;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
@@ -17,10 +18,10 @@ public abstract class Reunion {
     private Instant horainicio;
     private Instant horaFin;
     private TipoReunion tipoDeReunion;
-    private ArrayList<Asistencia> asistencias;
-    private ArrayList<Empleado> ausencias;
-    private ArrayList<Retraso> retrasos;
-    private ArrayList<Nota> notas;
+    private ArrayList<Asistencia> asistencias = new ArrayList<Asistencia>();
+    private ArrayList<Empleado> ausencias = new ArrayList<Empleado>();
+    private ArrayList<Retraso> retrasos = new ArrayList<Retraso>();
+    private ArrayList<Nota> notas = new ArrayList<Nota>();
 
     public Reunion() {}
 
@@ -88,7 +89,9 @@ public abstract class Reunion {
 
     public void elaborarInforme(String accesoReunion) {
         // todas las notas relacionadas con la reunión (ordenadas cronológicamente)
-        String nombreInforme = "reunion" + fecha;
+        SimpleDateFormat formatoString = new SimpleDateFormat("yyyy-MM-dd_HH-mm");
+
+        String nombreInforme = "reunion " + formatoString.format(fecha);
 
         // Crear archivo
         try {
