@@ -173,10 +173,12 @@ public abstract class Reunion {
     }
 
     public void invitacionAceptada(Invitacion invitacion, Empleado empleado) {
-        if (horaPrevista.compareTo(invitacion.getHora()) >= 0) {
-            asistencias.add(empleado);
-        } else {
+        asistencias.add(empleado);
+
+        if (horaPrevista.compareTo(invitacion.getHora()) < 0) {
             retrasos.add(empleado);
+        } else if (horaFin.compareTo(invitacion.getHora()) >= 0) {
+            ausencias.add(empleado);
         }
     }
 
