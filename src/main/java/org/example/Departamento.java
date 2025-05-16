@@ -4,9 +4,17 @@ import java.util.ArrayList;
 
 public class Departamento implements Invitable {
     private ArrayList<Empleado> empleados = new ArrayList<Empleado>();
-    private String nombre;
+    private final String nombre;
+
+    public Departamento(String nombre, ArrayList<Empleado> empleados){
+        this.nombre=nombre;
+        this.empleados=empleados;
+    }
+
     // TODO: Obtener número de empleados
-    public int obtenerCantidadEmpleados() { return empleados.size(); }
+    public int obtenerCantidadEmpleados() {
+        return empleados.size();
+    }
 
     public String getNombre() {
         return nombre;
