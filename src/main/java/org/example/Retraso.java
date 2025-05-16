@@ -7,6 +7,7 @@ public class Retraso extends Asistencia{
 
     public Retraso(Empleado empleado) {
         super(empleado);
+        hora = Instant.now();
     }
 
     @Override
