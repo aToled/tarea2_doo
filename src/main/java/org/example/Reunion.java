@@ -17,9 +17,9 @@ public abstract class Reunion {
     private Instant horainicio;
     private Instant horaFin;
     private TipoReunion tipoDeReunion;
-    private ArrayList<Empleado> asistencias;
+    private ArrayList<Asistencia> asistencias;
     private ArrayList<Empleado> ausencias;
-    private ArrayList<Empleado> retrasos;
+    private ArrayList<Retraso> retrasos;
     private ArrayList<Nota> notas;
 
     public Reunion() {}
@@ -173,10 +173,10 @@ public abstract class Reunion {
     }
 
     public void invitacionAceptada(Invitacion invitacion, Empleado empleado) {
-        asistencias.add(empleado);
+        asistencias.add(new Asistencia(empleado));
 
         if (horaPrevista.compareTo(invitacion.getHora()) < 0) {
-            retrasos.add(empleado);
+            retrasos.add(new Retraso(empleado));
         } else if (horaFin.compareTo(invitacion.getHora()) >= 0) {
             ausencias.add(empleado);
         }
