@@ -17,6 +17,9 @@ public abstract class Reunion {
     private Instant horainicio;
     private Instant horaFin;
     private TipoReunion tipoDeReunion;
+    private ArrayList<Empleado> asistencias;
+    private ArrayList<Empleado> ausencias;
+    private ArrayList<Empleado> retrasos;
     private ArrayList<Nota> notas;
 
     public Reunion() {}
@@ -164,13 +167,17 @@ public abstract class Reunion {
         }
     }
 
-    public void invitar(Invitable invitado) {
+    public void invitar(Empleado empleado) {
         Invitacion invitacion = new Invitacion(this);
-        invitado.invitar(invitacion);
+        empleado.invitar(invitacion);
     }
 
-    public void invitacionAceptada(Invitacion invitacion, Invitable invitable) {
-        // TODO: Añadir invitado y ver si está atrasado o no
+    public void invitacionAceptada(Invitacion invitacion, Empleado empleado) {
+        if (horaPrevista.compareTo(invitacion.getHora()) >= 0) {
+            asistencias.add(empleado);
+        } else {
+            retrasos.add(empleado);
+        }
     }
 
     @Override
