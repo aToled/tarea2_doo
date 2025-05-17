@@ -20,6 +20,6 @@ public class Retraso extends Asistencia{
      */
     @Override
     public String toString() {
-        return "Retraso a la/s " + hora + " hora/s";
+        return getPersona().toString()+ " con retraso a la/s " + hora + " hora/s";
     }
 }

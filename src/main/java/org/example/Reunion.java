@@ -68,10 +68,10 @@ public abstract class Reunion {
      * @return el porcentaje de asistencia mediante el cociente entre el total de ausencias y el total de invitados.
      */
     public float obtenerPorcentajeAsistencia() {
-        if(!obtenerAsistencias().isEmpty()) {
-            return (float) obtenerAusencias().size() / (obtenerAsistencias().size() + obtenerAusencias().size());
+        if(!lista_invitados.isEmpty()) {
+            return (float) (asistencias.size()+retrasos.size()) / lista_invitados.size();
         }else
-            return 0f;
+            return 100f;
     }
 
     /**
@@ -183,19 +183,21 @@ public abstract class Reunion {
     /**
      * Verifica de la lista de personas invitadas si esta se unió a tiempo, con atraso, o si directamente no se unió.
      * al primero verificar que la hora en que se aceptó la invitación es no nula (acepto la invitación) para posteriormente
-     * comparar la diferencia entre la hora de inicio y la hora en la que se unió. (si es una diferencia negativa o igual a 0 significa que se
-     * unió antes o justo a tiempo)
+     * comparar la diferencia entre la hora que se unió (hora de aceptación) y la hora de inicio. (si es una diferencia negativa o igual a 0 significa que se
+     * unió antes o justo a tiempo, si es positiva significa que se unió después de que inicio la reunion, por lo tanto, atrasado)
      */
     public void invitaciones_Aceptadas() {
-        for(int i=0;i< lista_invitados.size();i++){
-            if(lista_invitados.get(i).getHora_de_aceptacion_invitacion()!=null){
-                if(horaInicio.compareTo(lista_invitados.get(i).getHora_de_aceptacion_invitacion()) <= 0){
-                    asistencias.add(new Asistencia(lista_invitados.get(i)));
-                }else if(horaFin.compareTo(lista_invitados.get(i).getHora_de_aceptacion_invitacion()) > 0){
-                    retrasos.add(new Retraso(lista_invitados.get(i)));
+        for (Persona invitado : lista_invitados) {
+            Instant aceptacion = invitado.getHora_de_aceptacion_invitacion();
+
+            if (aceptacion != null) {
+                if (aceptacion.compareTo(horaInicio) <= 0) {
+                    asistencias.add(new Asistencia(invitado));
+                } else if (aceptacion.compareTo(horaInicio) > 0 && aceptacion.compareTo(horaFin) <= 0) {
+                    retrasos.add(new Retraso(invitado));
                 }
-            }else{
-                ausencias.add(lista_invitados.get(i));
+            } else {
+                ausencias.add(invitado);
             }
         }
     }

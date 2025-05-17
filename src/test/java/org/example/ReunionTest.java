@@ -5,23 +5,27 @@ import org.junit.jupiter.api.Test;
 import java.sql.Date;
 import java.time.Duration;
 import java.time.Instant;
+import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class ReunionTest {
 
     @Test
-    void crearReunion() {
+    void crearReunion() throws InterruptedException {
         Reunion reunion = new ReunionPresencial(new Date(1000000), Instant.now(), TipoReunion.MARKETING, Duration.ofMinutes(90),"A3");
         Empleado e1=new Empleado("empleado1", "Villalobos", "Khristian", "kvillalobos2024@udec.cl");
-        Empleado e2=new Empleado("empleado2", "Toledo", "Alonso", "AToledo2024@udec.cl");
-        
+        Empleado e2=new Empleado("empleado2", "Toledo", "Alonso", "itoledo2024@udec.cl");
+        Empleado e3=new Empleado("empleado3", "Toledo", "Ignacio", "itoledo2024@udec.cl");
         reunion.crear_invitacion(e1);
         reunion.crear_invitacion(e2);
+        reunion.crear_invitacion(e3);
         e1.resolver_invitacion(true);
         e2.resolver_invitacion(false);
         reunion.iniciar();
-
+        TimeUnit.SECONDS.sleep(1);
+        e3.resolver_invitacion(true);
+        TimeUnit.SECONDS.sleep(1);
 
         reunion.agregarNota(new Nota(1, "Objetivos"));
         reunion.agregarNota(new Nota(2, "Desafíos"));
