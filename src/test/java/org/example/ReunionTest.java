@@ -12,7 +12,7 @@ class ReunionTest {
 
     @Test
     void crearReunion() {
-        Reunion reunion = new ReunionPresencial(new Date(1000000), Instant.now(), TipoReunion.MARKETING, Duration.ofMinutes(90));
+        Reunion reunion = new ReunionPresencial(new Date(1000000), Instant.now(), TipoReunion.MARKETING, Duration.ofMinutes(90),"A3");
 
         reunion.iniciar();
 
@@ -24,7 +24,7 @@ class ReunionTest {
 
         reunion.finalizar();
 
-        reunion.elaborarInforme("Sala A3");
+        Informe.elaborarInforme(reunion);
     }
 
     @Test

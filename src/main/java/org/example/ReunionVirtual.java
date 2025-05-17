@@ -6,22 +6,18 @@ import java.util.Date;
  * Es una extension de la clase reunion que representa aquellas reuniones virtuales.
  */
 public class ReunionVirtual extends Reunion{
-    private String enlace;
+    private final String enlace;
 
     /**
-     * @return el enlace en la que se realiza la reunion.
-     */
-    public String getEnlace() { return enlace; }
-
-    /**
-     * Inicializa la Reunion Virtual.
+     * Inicializa la Reunion Virtual y guarda la referencia al enlace.
      * @param fecha: fecha de creación.
      * @param horaPrevista: hora prevista en la que debería iniciar la reunion.
      * @param tipoReunion: tipo(técnica, marketing, otro).
      * @param duracionPrevista: duración prevista que debería durar la reunion.
      */
-    public ReunionVirtual(Date fecha, Instant horaPrevista, TipoReunion tipoReunion, Duration duracionPrevista) {
+    public ReunionVirtual(Date fecha, Instant horaPrevista, TipoReunion tipoReunion, Duration duracionPrevista, String enlace) {
         super(fecha, horaPrevista, tipoReunion, duracionPrevista);
+        this.enlace=enlace;
     }
 
     /**
@@ -35,6 +31,6 @@ public class ReunionVirtual extends Reunion{
      */
     @Override
     public String toString() {
-        return "Reunión virtual en el enlace: " + enlace;
+        return "Reunión virtual en el enlace: " + enlace+"\n";
     }
 }
