@@ -1,11 +1,12 @@
 package org.example;
 import java.time.Instant;
+
 /**
  * Representa una invitación para una reunion ya sea virtual o presencial.
  */
 public class Invitacion {
     public Reunion reunion;
-    private Instant hora;
+    private final Instant hora;
 
     /**
      * Crea la invitación a la reunion especificada y almacena el momento de su creación.
@@ -24,10 +25,10 @@ public class Invitacion {
     }
 
     /**
-     * @return la información relevante a la invitación.
+     * @return la información relevante a la invitación con un formato legible para la hora.
      */
     @Override
     public String toString() {
-        return "Invitación a la/s " + hora + " hora/s";
+        return "Invitación enviada a las " + Informe.formatear_hora(hora) + " horas ";
     }
 }

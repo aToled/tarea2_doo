@@ -3,11 +3,22 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 /**
- * Clase cuyo único propósito es generar un informe de la reunion.
+ * Clase cuyo propósito principal es generar un informe de una reunion.
  */
 public class Informe {
+    /**
+     * Transforma el formato de la hora de entrada a uno más legible.
+     * @param hora: la hora a transformar
+     * @return la hora transformada a Horas:Minutos:Segundos.
+     */
+    public static String formatear_hora(Instant hora){
+        return DateTimeFormatter.ofPattern("HH:mm:ss").withZone(ZoneId.systemDefault()).format(hora);
+    }
 
     /**
      * Mediante varios métodos proporcionados por la implementación de java se genera un informe con toda la información necesaria de la reunion.
@@ -40,9 +51,9 @@ public class Informe {
 
             // write the string to the file
             fw.write("Fecha: " + reunion.getFecha() + "\n");
-            fw.write("Hora prevista: " + reunion.getHoraPrevista() + "\n");
-            fw.write("Hora inicio: " + reunion.getHoraInicio() + "\n");
-            fw.write("Hora final: " + reunion.getHoraFin() + "\n");
+            fw.write("Hora prevista: " + formatear_hora(reunion.getHoraPrevista()) + "\n");
+            fw.write("Hora inicio: " + formatear_hora(reunion.getHoraInicio()) + "\n");
+            fw.write("Hora final: " + formatear_hora(reunion.getHoraFin()) + "\n");
             int diferenciaMinutos = (int)reunion.calcularTiempoReal();
             int diferenciaHoras = diferenciaMinutos / 60;
             diferenciaMinutos -= (diferenciaHoras * 60);
@@ -57,8 +68,11 @@ public class Informe {
                 case MARKETING:
                     fw.write("Tipo de reunión: marketing\n");
                     break;
-                default:
+                case OTRO:
                     fw.write("Tipo de reunión: otro\n");
+                    break;
+                default:
+                    fw.write("Tipo de reunión no valido\n");
                     break;
             }
 

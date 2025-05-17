@@ -4,7 +4,7 @@ import java.time.Instant;
  * Clase usada por Reunion para mantener un registro de aquellas personas que asistieron, pero que están atrasadas.
  */
 public class Retraso extends Asistencia{
-    private Instant hora;
+    private final Instant hora;
 
     /**
      * Guarda la referencia de la persona atrasada.
@@ -20,6 +20,6 @@ public class Retraso extends Asistencia{
      */
     @Override
     public String toString() {
-        return getPersona().toString()+ " con retraso a la/s " + hora + " hora/s";
+        return getPersona().toString()+ " con retraso a las " + Informe.formatear_hora(hora) + " horas";
     }
 }

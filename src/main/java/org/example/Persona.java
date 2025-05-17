@@ -29,7 +29,7 @@ public class Persona implements Invitable {
      * @param invitacion: representa la invitación a una reunion.
      */
     public void invitar(Invitacion invitacion) {
-        System.out.println("Invitation: "+invitacion.toString()+"recibida por: "+this.toString());
+        System.out.println(invitacion.toString()+"recibida por "+this);
     }
 
     /**
