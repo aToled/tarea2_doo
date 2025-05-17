@@ -68,32 +68,35 @@ public class Informe {
                 fw.write("Sala o enlace desconocido\n");
             }
 
+            fw.write("\nInvitados:\n");
+            List<Persona> Invitados = reunion.obtenerInvitados();
+            for (int i = 0; i < Invitados.size(); i++) {
+                fw.write((i+1) + ") " + Invitados.get(i).toString() + "\n");
+            }
+
             // Redondeo a 1 decimal después de la coma
-            float porcentaje = Math.round(reunion.obtenerPorcentajeAsistencia() * 10.0f) / 10.0f;
-            fw.write("Porcentaje de asistencias: " + porcentaje + "\n");
+            float porcentaje = Math.round(reunion.obtenerPorcentajeAsistencia() * 100.0f);
+            fw.write("\nPorcentaje de asistencias: " + porcentaje + "%\n");
 
-            fw.write("Participantes:\n");
-            List participantes = reunion.obtenerAsistencias();
-            for (int i = 0; i < reunion.obtenerTotalAsistencia(); i++) {
-                fw.write((i+1) + ") " + participantes.get(i).toString() + "\n");
+            fw.write("\nAsistentes:\n");
+            List<Asistencia> Asistentes = reunion.obtenerAsistencias();
+            for (int i = 0; i < Asistentes.size(); i++) {
+                fw.write((i+1) + ") " + Asistentes.get(i).getPersona().toString() + "\n");
             }
 
-            fw.write("\n");
-            fw.write("Retrasos:\n");
-            List retrasos = reunion.obtenerRetrasos();
-            for (int i = 0; i < reunion.obtenerTotalRetrasos(); i++) {
-                fw.write((i+1) + ") " + retrasos.get(i).toString() + "\n");
+            fw.write("\nRetrasos:\n");
+            List<Retraso> Retrasos = reunion.obtenerRetrasos();
+            for (int i = 0; i < Retrasos.size(); i++) {
+                fw.write((i+1) + ") " + Retrasos.get(i).toString() + "\n");
             }
 
-            fw.write("\n");
-            fw.write("Ausencias:\n");
-            List ausencias = reunion.obtenerAusencias();
-            for (int i = 0; i < reunion.obtenerTotalAusencias(); i++) {
-                fw.write((i+1) + ") " + ausencias.get(i).toString() + "\n");
+            fw.write("\nAusencias:\n");
+            List<Persona> Ausencias = reunion.obtenerAusencias();
+            for (int i = 0; i < Ausencias.size(); i++) {
+                fw.write((i+1) + ") " + Ausencias.get(i).toString() + "\n");
             }
 
-            fw.write("\n");
-            fw.write("Notas de la reunión:\n");
+            fw.write("\nNotas de la reunión:\n");
             List<Nota> notas = reunion.obtenerNotas();
             for (Nota nota : notas) {
                 fw.write("-" + nota.toString() + "\n");

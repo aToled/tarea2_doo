@@ -1,8 +1,4 @@
 package org.example;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
@@ -12,9 +8,9 @@ import java.util.List;
 /**
  * Representa una reunion con la fecha de su creación, la hora prevista de inicio, duración prevista,
  * su hora real de inicio, hora de finalización, si la de reunion es virtual o presencial, y de qué tipo es (técnica, marketing, otro).
- * Esta clase también contiene listas de las personas que asistieron, que se retrasaron, que se ausentaron,
+ * Esta clase también contiene listas de las personas que fueron invitadas, que asistieron, que se retrasaron, que se ausentaron,
  * y de las posibles notas tomadas durante la reunion por su anfitrión. (a la vez contiene parte de la lógica para recopilar tales datos)
- * Además maneja el reparto de invitaciones y la creación de un informe acerca de todos los datos relevantes de la reunion.
+ * Además maneja el reparto de invitaciones.
  */
 public abstract class Reunion {
     private final Date fecha;
@@ -22,7 +18,8 @@ public abstract class Reunion {
     private final Duration duracionPrevista;
     private Instant horaInicio;
     private Instant horaFin;
-    private TipoReunion tipoDeReunion;
+    private final TipoReunion tipoDeReunion;
+    private final ArrayList<Persona> lista_invitados = new ArrayList<>();
     private final ArrayList<Asistencia> asistencias = new ArrayList<>();
     private final ArrayList<Persona> ausencias = new ArrayList<>();
     private final ArrayList<Retraso> retrasos = new ArrayList<>();
@@ -42,22 +39,25 @@ public abstract class Reunion {
         this.duracionPrevista=duracionPrevista;
     }
 
-    // TODO: Obtener una lista de asistencias, ausencias, retrasos y notas de alguna parte
+    /**
+     * @return la lista de invitados.
+     */
+    public List<Persona> obtenerInvitados() { return lista_invitados; }
 
     /**
      * @return la lista de asistencias.
      */
-    public List obtenerAsistencias() { return new ArrayList<>(); }
+    public List<Asistencia> obtenerAsistencias() { return asistencias; }
 
     /**
      * @return la lista de ausencias.
      */
-    public List obtenerAusencias() { return new ArrayList<>(); }
+    public List<Persona> obtenerAusencias() { return ausencias; }
 
     /**
      * @return la lista de retrasos.
      */
-    public List obtenerRetrasos() { return new ArrayList<>(); }
+    public List<Retraso> obtenerRetrasos() { return retrasos; }
 
     /**
      * @return la lista de notas.
@@ -65,33 +65,13 @@ public abstract class Reunion {
     public List<Nota> obtenerNotas() { return notas; }
 
     /**
-     * @return el número total de asistencias.
-     */
-    public int obtenerTotalAsistencia() { return obtenerAsistencias().size(); }
-
-    /**
-     * @return el número total de ausencias.
-     */
-    public int obtenerTotalAusencias() { return obtenerAusencias().size(); }
-
-    /**
-     * @return el número total de retrasos.
-     */
-    public int obtenerTotalRetrasos() { return obtenerRetrasos().size(); }
-
-    /**
-     * @return el número total de notas.
-     */
-    public int obtenerTotalNotas() { return obtenerNotas().size(); }
-
-    /**
-     * @return el porcentaje de asistencia mediante el cociente entre las ausencias y el total de invitados (que son los ausentes + presentes).
+     * @return el porcentaje de asistencia mediante el cociente entre el total de ausencias y el total de invitados.
      */
     public float obtenerPorcentajeAsistencia() {
-        float asistencias = obtenerTotalAsistencia();
-        float ausencias = obtenerTotalAusencias();
-
-        return ausencias / (asistencias + ausencias);
+        if(!obtenerAsistencias().isEmpty()) {
+            return (float) obtenerAusencias().size() / (obtenerAsistencias().size() + obtenerAusencias().size());
+        }else
+            return 0f;
     }
 
     /**
@@ -134,7 +114,7 @@ public abstract class Reunion {
     /**
      * Enum de la modalidad de reunion (Virtual o Presencial).
      */
-    protected enum Modalidad {
+    public enum Modalidad {
         Presencial, Virtual
     }
 
@@ -197,24 +177,26 @@ public abstract class Reunion {
     public void crear_invitacion(Persona persona) {
         Invitacion invitacion = new Invitacion(this);
         persona.invitar(invitacion);
+        lista_invitados.add(persona);
     }
 
     /**
-     * Verifica si la persona invitada se unió a tiempo antes de que iniciase la reunion, con atraso, o si directamente no se unió.
+     * Verifica de la lista de personas invitadas si esta se unió a tiempo, con atraso, o si directamente no se unió.
      * al primero verificar que la hora en que se aceptó la invitación es no nula (acepto la invitación) para posteriormente
-     * comparar la diferencia entre la hora de inicio y la hora en la que se unió (si es una diferencia negativa o igual a 0 significa que se
+     * comparar la diferencia entre la hora de inicio y la hora en la que se unió. (si es una diferencia negativa o igual a 0 significa que se
      * unió antes o justo a tiempo)
-     * @param persona: la persona que fue invitada a la reunion.
      */
-    public void invitaciones_Aceptadas(Persona persona) {
-        if(persona.getHora_de_aceptacion_invitacion()!=null){
-            if(horaInicio.compareTo(persona.getHora_de_aceptacion_invitacion()) <= 0){
-                asistencias.add(new Asistencia(persona));
-            }else if(horaFin.compareTo(persona.getHora_de_aceptacion_invitacion()) > 0){
-                retrasos.add(new Retraso(persona));
+    public void invitaciones_Aceptadas() {
+        for(int i=0;i< lista_invitados.size();i++){
+            if(lista_invitados.get(i).getHora_de_aceptacion_invitacion()!=null){
+                if(horaInicio.compareTo(lista_invitados.get(i).getHora_de_aceptacion_invitacion()) <= 0){
+                    asistencias.add(new Asistencia(lista_invitados.get(i)));
+                }else if(horaFin.compareTo(lista_invitados.get(i).getHora_de_aceptacion_invitacion()) > 0){
+                    retrasos.add(new Retraso(lista_invitados.get(i)));
+                }
+            }else{
+                ausencias.add(lista_invitados.get(i));
             }
-        }else{
-            ausencias.add(persona);
         }
     }
 
