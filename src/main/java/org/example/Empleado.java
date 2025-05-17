@@ -1,11 +1,13 @@
 package org.example;
 
-public class Empleado implements Invitable {
+public class Empleado extends Persona implements Invitable {
     private final String id;
     private final String apellidos;
     private final String nombre;
     private final String correo;
-    public Empleado(String id, String apellidos, String nombre, String correo){
+
+    public Empleado(String id, String apellidos, String nombre, String correo) {
+        super(id, apellidos, nombre, correo);
         this.id=id;
         this.apellidos=apellidos;
         this.nombre=nombre;
@@ -14,22 +16,6 @@ public class Empleado implements Invitable {
 
     public void invitar(Invitacion invitacion) {
         invitacion.reunion.invitacionAceptada(invitacion, this);
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public String getApellidos() {
-        return apellidos;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public String getCorreo() {
-        return correo;
     }
 
     @Override
