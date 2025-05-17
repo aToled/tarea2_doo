@@ -10,8 +10,8 @@ public class ReunionPresencial extends Reunion {
 
     public ReunionPresencial() {}
 
-    public ReunionPresencial(Date fecha, Instant horaPrevista) {
-        super(fecha, horaPrevista);
+    public ReunionPresencial(Date fecha, Instant horaPrevista, TipoReunion tipoReunion) {
+        super(fecha, horaPrevista, tipoReunion);
     }
 
     @Override

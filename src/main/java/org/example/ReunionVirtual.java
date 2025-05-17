@@ -12,8 +12,8 @@ public class ReunionVirtual extends Reunion{
 
     public ReunionVirtual() {}
 
-    public ReunionVirtual(Date fecha, Instant horaPrevista) {
-        super(fecha, horaPrevista);
+    public ReunionVirtual(Date fecha, Instant horaPrevista, TipoReunion tipoReunion) {
+        super(fecha, horaPrevista, tipoReunion);
     }
 
     @Override

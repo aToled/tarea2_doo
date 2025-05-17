@@ -25,9 +25,10 @@ public abstract class Reunion {
 
     public Reunion() {}
 
-    public Reunion(Date fecha, Instant horaPrevista) {
+    public Reunion(Date fecha, Instant horaPrevista, TipoReunion tipoDeReunion) {
         this.fecha = fecha;
         this.horaPrevista = horaPrevista;
+        this.tipoDeReunion = tipoDeReunion;
     }
 
     // TODO: Obtener una lista de asistencias, ausencias, retrasos y notas de alguna parte
@@ -119,7 +120,17 @@ public abstract class Reunion {
             diferenciaMinutos -= (diferenciaHoras * 60);
 
             fw.write("Duración: " + diferenciaHoras + " horas con " + diferenciaMinutos + " minutos\n");
-            fw.write("Tipo de reunión: " + getTipoDeReunion());
+
+            switch (tipoDeReunion) {
+                case TECNICA:
+                    fw.write("Tipo de reunión: técnica\n");
+                    break;
+                case MARKETING:
+                    fw.write("Tipo de reunión: marketing\n");
+                default:
+                    fw.write("Tipo de reunión: otro\n");
+                    break;
+            }
 
             if (getModalidad() == Modalidad.Presencial) {
                 fw.write("Sala: " + accesoReunion + "\n");
