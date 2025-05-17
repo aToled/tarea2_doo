@@ -181,17 +181,19 @@ public abstract class Reunion {
         }
     }
 
-    public void invitar(Empleado empleado) {
+    public void crear_invitacion(Empleado empleado) {
         Invitacion invitacion = new Invitacion(this);
         empleado.invitar(invitacion);
     }
 
-    public void invitacionAceptada(Invitacion invitacion, Persona persona) {
-        asistencias.add(new Asistencia(persona));
-
-        if (horaPrevista.compareTo(invitacion.getHora()) < 0) {
-            retrasos.add(new Retraso(persona));
-        } else if (horaFin.compareTo(invitacion.getHora()) >= 0) {
+    public void invitaciones_Aceptadas(Invitacion invitacion, Persona persona) {
+        if(persona.getHora_de_aceptacion_invitacion()!=null){
+            if(horaPrevista.compareTo(persona.getHora_de_aceptacion_invitacion()) <= 0){
+                asistencias.add(new Asistencia(persona));
+            }else if(horaFin.compareTo(invitacion.getHora()) > 0){
+                retrasos.add(new Retraso(persona));
+            }
+        }else{
             ausencias.add(persona);
         }
     }
