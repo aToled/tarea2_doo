@@ -16,11 +16,11 @@ class ReunionTest {
 
         reunion.iniciar();
 
-        reunion.invitar(new Empleado("empleado1", "Villalobos", "Khristian", "kvillalobos2024@udec.cl"));
-        reunion.invitar(new Empleado("empleado2", "Toledo", "Alonso", "AToledo2024@udec.cl"));
+        reunion.crear_invitacion(new Empleado("empleado1", "Villalobos", "Khristian", "kvillalobos2024@udec.cl"));
+        reunion.crear_invitacion(new Empleado("empleado2", "Toledo", "Alonso", "AToledo2024@udec.cl"));
 
         reunion.agregarNota(new Nota(1, "Objetivos"));
-        reunion.agregarNota(new Nota(2, "Desafios"));
+        reunion.agregarNota(new Nota(2, "Desafíos"));
 
         reunion.finalizar();
 
@@ -120,7 +120,7 @@ class ReunionTest {
     }
 
     @Test
-    void invitacionAceptada() {
+    void invitaciones_Aceptadas() {
     }
 
     @Test

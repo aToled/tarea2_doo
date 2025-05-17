@@ -25,10 +25,11 @@ public abstract class Reunion {
 
     public Reunion() {}
 
-    public Reunion(Date fecha, Instant horaPrevista, TipoReunion tipoDeReunion) {
+    public Reunion(Date fecha, Instant horaPrevista, TipoReunion tipoDeReunion, Duration duracionPrevista) {
         this.fecha = fecha;
         this.horaPrevista = horaPrevista;
         this.tipoDeReunion = tipoDeReunion;
+        this.duracionPrevista=duracionPrevista;
     }
 
     // TODO: Obtener una lista de asistencias, ausencias, retrasos y notas de alguna parte

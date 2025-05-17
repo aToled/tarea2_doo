@@ -1,7 +1,7 @@
 Fecha: 1969-12-31
-Hora prevista: 2025-05-17T00:58:49.239Z
-Hora inicio: 2025-05-17T00:58:49.239Z
-Hora final: 2025-05-17T00:58:49.252Z
+Hora prevista: 2025-05-17T01:47:39.262Z
+Hora inicio: 2025-05-17T01:47:39.262Z
+Hora final: 2025-05-17T01:47:39.289Z
 Duración: 0 horas con 0 minutos
 Tipo de reunión: marketing
 Tipo de reunión: otro
