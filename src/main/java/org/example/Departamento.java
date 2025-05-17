@@ -26,7 +26,7 @@ public class Departamento implements Invitable {
 
     public void invitar(Invitacion invitacion) {
         for (Empleado empleado : empleados) {
-            invitacion.reunion.invitacionAceptada(invitacion, empleado);
+            empleado.invitar(invitacion);
         }
     }
 
@@ -34,6 +34,6 @@ public class Departamento implements Invitable {
 
     @Override
     public String toString() {
-        return "Departamento: " + nombre + " / Emleados: " + obtenerCantidadEmpleados();
+        return "Departamento: " + nombre + " / Empleados: " + obtenerCantidadEmpleados();
     }
 }
