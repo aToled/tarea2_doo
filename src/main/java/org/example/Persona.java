@@ -1,6 +1,6 @@
 package org.example;
 
-public class Persona {
+public class Persona implements Invitable {
     private final String id;
     private final String apellidos;
     private final String nombre;
@@ -11,6 +11,10 @@ public class Persona {
         this.apellidos = apellidos;
         this.nombre = nombre;
         this.correo = correo;
+    }
+
+    public void invitar(Invitacion invitacion) {
+        invitacion.reunion.invitacionAceptada(invitacion, this);
     }
 
     public String getId() {

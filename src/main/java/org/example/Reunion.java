@@ -19,7 +19,7 @@ public abstract class Reunion {
     private Instant horaFin;
     private TipoReunion tipoDeReunion;
     private ArrayList<Asistencia> asistencias = new ArrayList<Asistencia>();
-    private ArrayList<Empleado> ausencias = new ArrayList<Empleado>();
+    private ArrayList<Persona> ausencias = new ArrayList<Persona>();
     private ArrayList<Retraso> retrasos = new ArrayList<Retraso>();
     private ArrayList<Nota> notas = new ArrayList<Nota>();
 
@@ -175,13 +175,13 @@ public abstract class Reunion {
         empleado.invitar(invitacion);
     }
 
-    public void invitacionAceptada(Invitacion invitacion, Empleado empleado) {
-        asistencias.add(new Asistencia(empleado));
+    public void invitacionAceptada(Invitacion invitacion, Persona persona) {
+        asistencias.add(new Asistencia(persona));
 
         if (horaPrevista.compareTo(invitacion.getHora()) < 0) {
-            retrasos.add(new Retraso(empleado));
+            retrasos.add(new Retraso(persona));
         } else if (horaFin.compareTo(invitacion.getHora()) >= 0) {
-            ausencias.add(empleado);
+            ausencias.add(persona);
         }
     }
 

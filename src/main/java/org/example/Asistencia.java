@@ -1,11 +1,11 @@
 package org.example;
 
 public class Asistencia {
-    private final Empleado empleado;
+    private final Persona persona;
 
-    public Asistencia(Empleado empleado) {
-        this.empleado = empleado;
+    public Asistencia(Persona persona) {
+        this.persona = persona;
     }
 
-    public Empleado getEmpleado() { return empleado; }
+    public Persona getPersona() { return persona; }
 }

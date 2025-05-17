@@ -1,6 +1,6 @@
 package org.example;
 
-public class Empleado extends Persona implements Invitable {
+public class Empleado extends Persona {
     private final String id;
     private final String apellidos;
     private final String nombre;
@@ -12,10 +12,6 @@ public class Empleado extends Persona implements Invitable {
         this.apellidos=apellidos;
         this.nombre=nombre;
         this.correo=correo;
-    }
-
-    public void invitar(Invitacion invitacion) {
-        invitacion.reunion.invitacionAceptada(invitacion, this);
     }
 
     @Override

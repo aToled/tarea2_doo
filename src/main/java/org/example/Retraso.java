@@ -5,8 +5,8 @@ import java.time.Instant;
 public class Retraso extends Asistencia{
     private Instant hora;
 
-    public Retraso(Empleado empleado) {
-        super(empleado);
+    public Retraso(Persona persona) {
+        super(persona);
         hora = Instant.now();
     }
 
