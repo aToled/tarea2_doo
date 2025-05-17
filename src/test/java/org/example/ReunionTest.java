@@ -2,8 +2,8 @@ package org.example;
 
 import org.junit.jupiter.api.Test;
 
-import javax.xml.datatype.Duration;
 import java.sql.Date;
+import java.time.Duration;
 import java.time.Instant;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -12,7 +12,7 @@ class ReunionTest {
 
     @Test
     void crearReunion() {
-        Reunion reunion = new ReunionPresencial(new Date(1000000), Instant.now(), TipoReunion.MARKETING);
+        Reunion reunion = new ReunionPresencial(new Date(1000000), Instant.now(), TipoReunion.MARKETING, Duration.ofMinutes(90));
 
         reunion.iniciar();
 
