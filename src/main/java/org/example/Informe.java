@@ -76,7 +76,7 @@ public class Informe {
                     break;
             }
 
-            if (reunion.getModalidad() == Reunion.Modalidad.Presencial||reunion.getModalidad() == Reunion.Modalidad.Virtual) {
+            if (reunion.getModalidad() == Modalidad.Presencial||reunion.getModalidad() == Modalidad.Virtual) {
                 fw.write(reunion.toString());
             } else {
                 fw.write("Sala o enlace desconocido\n");

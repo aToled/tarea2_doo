@@ -112,13 +112,6 @@ public abstract class Reunion {
     }
 
     /**
-     * Enum de la modalidad de reunion (Virtual o Presencial).
-     */
-    public enum Modalidad {
-        Presencial, Virtual
-    }
-
-    /**
      * Devuelve la fecha en que se creó la reunion.
      * @return tal fecha.
      */
