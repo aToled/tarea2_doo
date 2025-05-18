@@ -5,7 +5,7 @@ import java.util.ArrayList;
  * pueden ser invitados a reuniones, contiene una lista de empleados que pertenecen a dicho departamento.
  */
 public class Departamento implements Invitable {
-    private ArrayList<Empleado> empleados = new ArrayList<Empleado>();
+    private final ArrayList<Empleado> empleados;
     private final String nombre;
 
     /**
@@ -66,6 +66,6 @@ public class Departamento implements Invitable {
      */
     @Override
     public String toString() {
-        return "Departamento: " + nombre + " / Empleados: " + obtenerCantidadEmpleados();
+        return "Departamento: " + nombre + " / Empleados: " + getEmpleados().toString();
     }
 }
