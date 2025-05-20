@@ -18,11 +18,14 @@ class ReunionTest {
         Empleado e1=new Empleado("empleado1", "Villalobos", "Khristian", "kvillalobos2024@udec.cl");
         Empleado e2=new Empleado("empleado2", "Toledo", "Alonso", "itoledo2024@udec.cl");
         Empleado e3=new Empleado("empleado3", "Toledo", "Ignacio", "itoledo2024@udec.cl");
+        Persona p1=new Persona("persona1", "John", "Cena", "andHisNameIsJohnCena@gmail.com");
         reunion.crear_invitacion(e1);
         reunion.crear_invitacion(e2);
         reunion.crear_invitacion(e3);
+        reunion.crear_invitacion(p1);
         e1.resolver_invitacion(true);
         e2.resolver_invitacion(false);
+        p1.resolver_invitacion(true);
         reunion.iniciar();
         TimeUnit.SECONDS.sleep(1);
         e3.resolver_invitacion(true);
@@ -43,11 +46,14 @@ class ReunionTest {
         Empleado e1=new Empleado("empleado1", "Villalobos", "Khristian", "kvillalobos2024@udec.cl");
         Empleado e2=new Empleado("empleado2", "Toledo", "Alonso", "itoledo2024@udec.cl");
         Empleado e3=new Empleado("empleado3", "Toledo", "Ignacio", "itoledo2024@udec.cl");
+        Persona p1=new Persona("persona1", "John", "Cena", "andHisNameIsJohnCena@gmail.com");
         reunion.crear_invitacion(e1);
         reunion.crear_invitacion(e2);
         reunion.crear_invitacion(e3);
+        reunion.crear_invitacion(p1);
         e1.resolver_invitacion(true);
         e2.resolver_invitacion(false);
+        p1.resolver_invitacion(true);
         reunion.iniciar();
         TimeUnit.SECONDS.sleep(1);
         e3.resolver_invitacion(true);
@@ -60,10 +66,10 @@ class ReunionTest {
         int retrasos = reunion.obtenerRetrasos().size();
         int ausencias = reunion.obtenerAusencias().size();
 
-        assertEquals(1, asistencias);
+        assertEquals(2, asistencias);
         assertEquals(1, retrasos);
         assertEquals(1, ausencias);
-        assertEquals(2.f/3.f, (float) (asistencias + retrasos) / (asistencias+retrasos+ausencias));
+        assertEquals(3.f/4.f, (float) (asistencias + retrasos) / (asistencias+retrasos+ausencias));
     }
 
     @Test
