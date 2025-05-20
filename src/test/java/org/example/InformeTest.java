@@ -31,8 +31,8 @@ class InformeTest {
         e2.resolver_invitacion(false);
         reunion.iniciar();
 
-        reunion.agregarNota(new Nota(1, "Objetivos"));
-        reunion.agregarNota(new Nota(2, "Desafíos"));
+        reunion.agregarNota(new Nota("Objetivos"));
+        reunion.agregarNota(new Nota("Desafíos"));
 
         try {
             TimeUnit.SECONDS.sleep(1);

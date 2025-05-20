@@ -78,7 +78,10 @@ public abstract class Reunion {
      * Agrega una nota al final de la lista de notas de la reunion.
      * @param nota: nota a ser agregada a la lista de notas.
      */
-    public void agregarNota(Nota nota) { notas.add(nota); }
+    public void agregarNota(Nota nota) {
+        nota.setNumeroNota(notas.size()+1);
+        notas.add(nota);
+    }
 
     /**
      * Quita la nota indicada por el índice, pero primero verifica que el índice ingresado sea válido.
@@ -180,6 +183,9 @@ public abstract class Reunion {
      * unió antes o justo a tiempo, si es positiva significa que se unió después de que inicio la reunion, por lo tanto, atrasado)
      */
     public void invitaciones_Aceptadas() {
+        if (horaInicio == null) {
+            return;
+        }
         for (Persona invitado : lista_invitados) {
             Instant aceptacion = invitado.getHora_de_aceptacion_invitacion();
 
