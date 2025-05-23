@@ -1,0 +1,30 @@
+Fecha: 1969-12-31
+Hora prevista: 09:31:35
+Hora inicio: 09:31:35
+Hora final: 09:31:37
+Duración Prevista: 1 horas con 30 minutos
+Duración Real: 0 horas con 0 minutos
+Tipo de reunión: marketing
+Reunión presencial en la sala: A3
+
+Invitados:
+1) Empleado: Khristian Villalobos, ID: empleado1, Correo: kvillalobos2024@udec.cl
+2) Empleado: Alonso Toledo, ID: empleado2, Correo: itoledo2024@udec.cl
+3) Empleado: Ignacio Toledo, ID: empleado3, Correo: itoledo2024@udec.cl
+4) Persona: Cena John, ID: persona1, Correo: andHisNameIsJohnCena@gmail.com
+
+Porcentaje de asistencias: 75.0%
+
+Asistentes:
+1) Empleado: Khristian Villalobos, ID: empleado1, Correo: kvillalobos2024@udec.cl
+2) Persona: Cena John, ID: persona1, Correo: andHisNameIsJohnCena@gmail.com
+
+Retrasos:
+1) Empleado: Ignacio Toledo, ID: empleado3, Correo: itoledo2024@udec.cl con retraso a las 09:31:37 horas
+
+Ausencias:
+1) Empleado: Alonso Toledo, ID: empleado2, Correo: itoledo2024@udec.cl
+
+Notas de la reunión:
+-Nota 1: Objetivos
+-Nota 2: Desafíos
