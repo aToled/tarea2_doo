@@ -42,3 +42,5 @@ getModalidad() devuelven Modalidad.Presencial o Modalidad.Virtual respectivament
 13) Clase *"Nota"*: se le agrego el atributo numero_nota.
 14) Interfaz *"Invitable"*: ahora en vez de una asociación desde Invitacion posee una dependencia hacia ella,
 ya que el método invitar(...) posee una Invitacion en su argumento.
+
+![tarea 2 UML](https://github.com/user-attachments/assets/dc24a6a0-3da2-4af9-a733-424129b01cea)
