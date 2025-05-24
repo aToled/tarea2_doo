@@ -22,7 +22,6 @@ public class Departamento implements Invitable {
      * Devuelve el número de empleados pertenecientes al departamento.
      * @return cantidad de empleados.
      */
-    // TODO: Obtener número de empleados
     public int obtenerCantidadEmpleados() {
         return empleados.size();
     }

@@ -1,0 +1,20 @@
+Fecha: 1969-12-31
+Hora prevista: 20:41:17
+Hora inicio: 20:41:17
+Hora final: 20:41:17
+Duración Prevista: 1 horas con 30 minutos
+Duración Real: 0 horas con 0 minutos
+Tipo de reunión: marketing
+Reunión presencial en la sala: A3
+
+Invitados:
+
+Porcentaje de asistencias: 10000.0%
+
+Asistentes:
+
+Retrasos:
+
+Ausencias:
+
+Notas de la reunión:
