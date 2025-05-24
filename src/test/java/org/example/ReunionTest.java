@@ -37,6 +37,13 @@ class ReunionTest {
         reunion.finalizar();
 
         reunion.invitaciones_Aceptadas();
+
+        assertEquals(2, reunion.obtenerAsistencias().size());
+        assertEquals(1, reunion.obtenerAusencias().size());
+        assertEquals(1, reunion.obtenerRetrasos().size());
+
+        assertEquals(2, reunion.obtenerNotas().size());
+
         Informe.elaborarInforme(reunion);
     }
 
